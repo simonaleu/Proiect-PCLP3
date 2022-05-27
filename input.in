@@ -1,0 +1,17 @@
+insert paracetamol 500 13 paracetamol efferalgan perfalgan
+insert algocalmin 500 20 metamizol
+insert aspirina 450 15 acid_acetilsalicilic arsen cloruri acid_salicilic
+insert colebil 100 20 metenamina magneziu 
+print
+modif_pret 17 paracetamol 500
+insert augmentin 500 22 amoxicilina acid_clavulanic hipromeloza dimeticona
+insert augmentin 1000 35 amoxicilina acid_clavulanic hipromeloza dimeticona
+insert augmentin 850 27 amoxicilina acid_clavulanic hipromeloza dimeticona
+print
+insert paxeladine 125 35 citrat_oxeladina
+insert paxeladine 100 29 citrat_oxeladina
+print
+afisare_pret 20
+calcul_reteta colebil algocalmin
+afisare_pret 35
+exit

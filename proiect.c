@@ -79,9 +79,9 @@ int cmpDenumire(void *e1, void *e2) {
 }
 
 int cmp_subst(void *e1, void *e2) {
-	Tinfos *pers1 = (Tinfos*)e1;
-	Tinfos *pers2 = (Tinfos*)e2;
-	if (strcmp(pers1->substanta, pers2->substanta) > 0)
+	Tinfos *s1 = (Tinfos*)e1;
+	Tinfos *s2 = (Tinfos*)e2;
+	if (strcmp(s1->substanta, s2->substanta) > 0)
 		return 0; 
 	return 1;
 }
@@ -193,7 +193,7 @@ int main() {
 	}
 
 	while(1) {
-		//printf("Introduceti comanda:\n");
+		// printf("Introduceti comanda:\n");
 		char *line = NULL;
 		size_t len;
 		if( getline(&line, &len, stdin) == -1) {
@@ -212,6 +212,7 @@ int main() {
 			return 0;
 		}
 		strcpy(comanda,token);
+		// < denumire doza pret [lista substante continute] >
 		if (strcmp(comanda, "insert") == 0) {
 			token = strtok(NULL, " .,\n");
 			char *denumire;
@@ -273,11 +274,13 @@ int main() {
 				AfiTH(h, afisareelems);
 			}
 		}
+		// < pretul dupa care se realizeaza afisarea >
 		if(strcmp(comanda,"afisare_pret") == 0) {
 			token = strtok(NULL, " ,.\n");
 			int ptr = atoi(token);
 			afisare_pret(h,ptr);
 		}
+		// < denumirile medicamentelor pentru reteta >
 		if(strcmp(comanda, "calcul_reteta") == 0) {
 			int suma = 0;
 			token = strtok(NULL, " ,.\n");
@@ -295,6 +298,7 @@ int main() {
 			}
 			printf("cost total: %d\n", suma);	
 		}
+		// < pretul_nou denumire >
 		if(strcmp(comanda,"modif_pret") == 0) {
 			int d = 0;
 			char* med;
@@ -310,6 +314,7 @@ int main() {
 			token = strtok(NULL, " ,.\n");
 			d = atoi(token);
 			modif_pret(h,pret_nou,med,d);
+			free(med);
 		}
 		if(strcmp(comanda,"exit") == 0) {
 			free (comanda);
